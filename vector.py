@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import math
+import numpy as np
 
 from util import unify_types
 
@@ -118,7 +119,17 @@ class Vector(object):
 
     def angle(self, other):
         """Returns the angle (in radians) enclosed by both vectors."""
-        return math.acos((self * other) / (self.length() * other.length()))
+        try:
+            return math.acos((self * other) / (self.length() * other.length()))
+        except:
+            print("i got a problem with arccos", self, other)
+            if self.length() * other.length() == 0:
+                return 0
+            if (self * other) / (self.length() * other.length()) > 0:
+                return 0
+            else:
+                return np.pi
+       
 
     def normalized(self):
         """Return the normalized version of the vector, that is a vector

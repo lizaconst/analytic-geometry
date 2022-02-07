@@ -3,6 +3,7 @@ from body import GeoBody
 from point import Point
 from solver import solve
 from vector import Vector
+import numpy as np
 
 class Plane(GeoBody):
     """A Plane (not the flying one)"""
@@ -73,9 +74,11 @@ class Plane(GeoBody):
         """
         from line import Line
         if isinstance(other, Point):
-            return other.pv() * self.n == self.p.pv() * self.n
+            #return other.pv() * self.n == self.p.pv() * self.n
+            return abs(other.pv() * self.n - self.p.pv() * self.n) < 0.0001
         elif isinstance(other, Line):
-            return Point(other.sv) in self and self.parallel(other)
+            #return Point(other.sv) in self and self.parallel(other)
+            return Point(other.sv) in self and other.dv*self.n < 0.0001
 
     def __repr__(self):
         return "Plane({}, {})".format(self.p, self.n)
