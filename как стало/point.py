@@ -45,12 +45,6 @@ class Point(object):
     def __sub__(self, other):
         return Point(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def __mul__(self, other):
-        return Point(other*self.x, other*self.y, other*self.y)
-
-    def __rmul__(self, other):
-        return self * other
-
     def __eq__(self, other):
         """Checks if two Points are equal. Always use == and not 'is'!"""
         return (self.x == other.x and
