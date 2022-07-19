@@ -11,3 +11,10 @@ __init__.py
 /src/__pycache__/*
 
 /data
+
+/pic_to_analyze
+/unity_1
+/unity_2
+/density_magnit
+/distributions
+
